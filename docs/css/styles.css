@@ -3,11 +3,14 @@
   --dark: #000;
   --course: #00B0FC;
   --light: #fff;
+  --hover: tomato;
+  --border: #fff;
 }
 
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 html {
@@ -48,10 +51,8 @@ body {
   grid-area: rooms;
   width: 100vw;
 }
-.main-rooms-header {
-  padding: 0 1.5em;
-}
 
+/* ONLINE */
 .online-title {
   padding: 0 1.5em;
 }
@@ -67,11 +68,37 @@ body {
 .online-list-item:first-of-type {
   margin-left: 1.5em;
 }
+.online-list-item-link:hover h4{
+  color: var(--hover);
+}
+.online-list-item-link:hover img{
+  border-color: var(--hover);
+}
 .online-list-item-cover {
   height: 6em;
+  border-radius: 100%;
+  border: solid 2px var(--border);
+}
+.online-list-item-title {
+  text-align: center;
+  color: var(--light);
 }
 
+/* ROOMS */
+.main-rooms-header {
+  padding: 0 1.5em;
+  margin-bottom: 1rem;
+}
+.title-list {
+  display: flex;
+}
+.title-list li {
+  list-style-type: none;
+}
 .rooms-title {
+}
+.rooms-new {
+  margin-left: 1rem;
 }
 .rooms-subtitle {
   padding: 0 1.5em;
@@ -90,9 +117,17 @@ body {
 .rooms-list-item:last-of-type {
   padding-right: 1.5em;
 }
+.rooms-list-item-link:hover h4{
+  color: var(--hover);
+}
+.rooms-list-item-link:hover img{
+  border-color: var(--hover);
+}
 .rooms-list-item-cover {
   height: 10em;
+  border: solid 2px var(--border);
 }
 .rooms-list-item-title{
   text-align: center;
+  color: var(--light);
 }
