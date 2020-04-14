@@ -39,28 +39,33 @@ body {
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
     "online"
-    "rooms"
+    "rooms";
 }
 .main-online {
   grid-area: online;
-  padding: 0 1.5em;
 }
 .main-rooms {
   grid-area: rooms;
+  width: 100vw;
 }
 .main-rooms-header {
   padding: 0 1.5em;
 }
 
 .online-title {
-
+  padding: 0 1.5em;
 }
 .online-list {
+  width: 100vw;
   display: flex;
+  overflow: auto;
 }
 .online-list-item {
   list-style-type: none;
   margin-right: 1.5em;
+}
+.online-list-item:first-of-type {
+  margin-left: 1.5em;
 }
 .online-list-item-cover {
   height: 6em;
