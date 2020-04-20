@@ -1,12 +1,13 @@
 {
   "name": "real-time-web-1920",
   "version": "1.0.0",
-  "description": "During this course you will learn how to build a **meaningful** real-time application. You will learn techniques to setup an open connection between the client and the server. This will enable you to send data in real-time both ways, at the same time.",
-  "main": "index.js",
+  "description": "yuhh",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/maybuzz/real-time-web-1920/issues"
   },
-  "homepage": "https://github.com/maybuzz/real-time-web-1920#readme"
+  "homepage": "https://github.com/maybuzz/real-time-web-1920#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.3",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
+  }
 }
