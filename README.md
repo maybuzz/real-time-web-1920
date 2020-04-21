@@ -26,16 +26,34 @@ To install this project you'll have to fork this repository and open your termin
 ```
 
 ## Features
+The chatrooms in this app are created by users and revolve around different albums on Spotify. When a user enters the room they will join the others inside the room and listen to the set album together. This way everyone can listen to the same album at the same time, as if you're listening to a record with your friends. Users can join and leave as they please, everything is connected to your Spotify account. You will need to open Spotify so the app can set the right song.
 
+Your profile will show your Top Artists and -Songs. This tells other users a lot about your use of Spotify and maybe it will even spark a new friendship. Who knows :)
 
 ## API
-
+The Spotify API has a lot of different endpoint you could use. For this application we'll be using;
+- `/search?q=name:...&type=album` -> to search for an album, use user input to complete the query
+- `/albums`-> get several albums, use {id} to get a specific album
+- `/tracks` -> get several tracks, use {id} to get a specific track
+- `/me/top/{artist or tracks}`
 
 ### DLC
+![DLC](/img/DLC.png)
 
 
 ## To-do
-
+- [ ] Data life cycle
+- [x] Setup templates
+- [x] Add stylesheet
+- [x] Get API keys
+- [x] Setup server
+- [ ] Connect spotify API
+  - [ ] Use OAuth
+  - [ ] Get top listened, currently playing, albums
+- [ ] Setup socket.io
+  - [ ] Chatrooms
+  - [ ] Private chat
+- [ ] Setup data storage (localstorage? DB?)
 
 ## Resources
 
