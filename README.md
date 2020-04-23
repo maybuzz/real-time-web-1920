@@ -1,6 +1,6 @@
 # Get a room ·
 
-"Get a Room" is a real-time application using the spotify API and socket.io. Users can join or create rooms to listen to a certain album together. Within the chatroom users can discus the songs on the album; talk about the artist, share facts about the album, etc.
+"Get a Room" is a real-time application using the spotify API and socket.io. Users can join or create rooms to listen to a certain album together. Within the chatroom users can discuss the songs on the album; talk about the artist, share facts about the album, etc.
 
 ![prototype 1](/img/prototype1.png)
 
@@ -26,16 +26,17 @@ To install this project you'll have to fork this repository and open your termin
 ```
 
 ## Features
-The chatrooms in this app are created by users and revolve around different albums on Spotify. When a user enters the room they will join the others inside the room and listen to the set album together. This way everyone can listen to the same album at the same time, as if you're listening to a record with your friends. Users can join and leave as they please, everything is connected to your Spotify account. You will need to open Spotify so the app can set the right song.
+The chatrooms in this app are created by users and revolve around different albums on Spotify. When a user enters the room they will join the others inside the room and listen to the set album together. This way everyone can listen to the same album at the same time, as if you're listening to a record with your friends. Users can join and leave as they please, everything is connected to your Spotify account. You will need to open Spotify so the app can set the right song, when listening to the album together.
 
-Your profile will show your Top Artists and -Songs. This tells other users a lot about your use of Spotify and maybe it will even spark a new friendship. Who knows :)
+Your profile shows your Top Artists and -Songs. This tells other users a lot about your use of Spotify and maybe it will even spark a new friendship. Who knows :)
 
 ## API
 The Spotify API has a lot of different endpoint you could use. For this application we'll be using;
-- `/search?q=name:...&type=album` -> to search for an album, use user input to complete the query
-- `/albums`-> get several albums, use {id} to get a specific album
-- `/tracks` -> get several tracks, use {id} to get a specific track
-- `/me/top/{artist or tracks}`
+- `/search?q=name:{...}&type=album` -> to search for an album, use user input to complete the query
+- `/albums`, `/albums/{id}`-> get several albums or get a specific album using the Spotify ID
+- `/albums/{id}/tracks` -> get the tracks from a specific album using the Spotify ID  
+- `/me/top/{artist or tracks}` -> get personal top tracks or artists
+- `/users/{user_id}` -> get user's profile
 
 ### DLC
 ![DLC](/img/DLC.png)
