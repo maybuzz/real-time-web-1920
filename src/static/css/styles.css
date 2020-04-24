@@ -41,7 +41,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   border-color: var(--hover);
 }
 
-.main {
+.main-home {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
@@ -56,7 +56,15 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   width: 100vw;
 }
 
-/* ONLINE */
+.main-room {
+
+}
+
+.main-chat {
+  background-color: var(--light);
+}
+
+/* HOME: ONLINE */
 .online-title {
   padding: 0 1.5em;
 }
@@ -89,7 +97,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   color: var(--light);
 }
 
-/* ROOMS */
+/* HOME: ROOMS SECTION */
 .main-rooms-header {
   padding: 0 1.5em;
   margin-bottom: 1rem;
@@ -142,3 +150,35 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   text-align: center;
   color: var(--light);
 }
+
+/* ROOM: ALBUM */
+.album {
+  background-color: var(--dark);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 2rem;
+  height: 13.5rem;
+}
+
+.album-cover {
+
+}
+
+.album-cover-img {
+  height: 12.5rem;
+}
+
+.album-tracks {
+
+}
+
+.album-tracks-list {
+  height: 10.5rem;
+  overflow: scroll;
+}
+
+.album-tracks-item {
+
+}
+
+/* ROOM: CHAT */

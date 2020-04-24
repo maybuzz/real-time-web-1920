@@ -43,11 +43,11 @@ router.get('/callback', function(req, res) {
   }
 
   request.post(authOptions, function(error, response, body) {
-    console.log(access_token);
     var access_token = body.access_token
     let uri = process.env.FRONTEND_URI || 'http://localhost:3000/'
     req.session.access_token = access_token
     res.redirect(uri)
+    console.log(access_token);
   })
 })
 

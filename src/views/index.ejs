@@ -4,37 +4,24 @@
 <%- include ("partials/head"); -%>
 
 <body>
-  <header class="header">
-    <a class="header-img" href="#">
-      <img class="" src="/img/placeholder.png" alt="">
-    </a>
-  </header>
-  <main class="main">
+  <%- include ("partials/header"); -%>
+
+  <main class="main-home">
+
     <section class="main-online">
       <article class="">
         <h3 class="online-title">online</h3>
         <ul class="online-list">
-          <li class="online-list-item">
-            <a class="online-list-item-link" href="#">
-              <img class="online-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="online-list-item-title">username</h4>
-            </a>
-          </li>
-          <li class="online-list-item">
-            <a class="online-list-item-link" href="#">
-              <img class="online-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="online-list-item-title">username</h4>
-            </a>
-          </li>
-          <li class="online-list-item">
-            <a class="online-list-item-link" href="#">
-              <img class="online-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="online-list-item-title">username</h4>
-            </a>
-          </li>
+          <%- include ("partials/online-item"); -%>
+
+          <%- include ("partials/online-item"); -%>
+
+          <%- include ("partials/online-item"); -%>
+
         </ul>
       </article>
     </section>
+
     <section class="main-rooms">
       <header class="main-rooms-header">
         <ul class="title-list">
@@ -42,61 +29,31 @@
           <li><h2 class="">//</h2></li>
           <li><a class="rooms-new">add room</a></li>
         </ul>
-        <form class="rooms-search-form" action="index.html" method="post">
-          <input class="rooms-search-form-input" type="text" name="search" placeholder="search...">
-          <button type="submit" name="submit">search</button>
-        </form>
+        <%- include ("partials/search"); -%>
       </header>
+
       <article class="">
         <h3 class="rooms-subtitle">latest</h3>
         <ul class="rooms-list">
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
-          <li class="rooms-list-item">
-            <a class="rooms-list-item-link" href="#">
-              <img class="rooms-list-item-cover" src="/img/placeholder.png" alt="">
-              <h4 class="rooms-list-item-title">roomname</h4>
-            </a>
-          </li>
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
         </ul>
       </article>
 
+
     </section>
   </main>
-  <script src="/js/main.js" type="text/javascript"></script>
+
+  <%- include ("partials/scripts"); -%>
+
 </body>
 </html>

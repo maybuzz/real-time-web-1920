@@ -3,12 +3,12 @@ console.log("helper");
 
 const fetch = require('node-fetch')
 
-function getDataWithToken({acces_token, url}){
+function getDataWithToken({access_token, url}){
     return fetch(url,
     {
         headers:
         {
-        'Authorization': 'Bearer ' + acces_token
+        'Authorization': 'Bearer ' + access_token
         }
     })
         .then(response=> response.json())
