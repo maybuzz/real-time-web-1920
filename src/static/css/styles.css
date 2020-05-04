@@ -145,6 +145,7 @@ body {
 }
 .rooms-list-item {
   list-style-type: none;
+  position: relative;
   /* margin-right: 1.5em; */
 }
 .rooms-list-item:first-of-type {
@@ -266,6 +267,12 @@ body {
 }
 
 .chat-msg-user {
+}
+
+.chat-msg-welcome {
+  color: var(--dark);
+  list-style-type: none;
+
 }
 
 .chat-msg-me-text, .chat-msg-user-text {

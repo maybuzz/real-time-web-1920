@@ -1,8 +1,6 @@
 <header class="header">
   <a class="btn btn--back" href="/"><</a>
   <a class="header-img" href="#">
-    <% if(me_pic.length !== 0) { %>
-      <img class="" src="<%=me_pic[0].url %>" alt="">
-    <% }) %>
+    <img class="" src="<%= recent.items[0].track.album.images[0].url %>" alt="">
   </a>
 </header>
