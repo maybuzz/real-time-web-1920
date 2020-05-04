@@ -1,18 +1,17 @@
 <section class="album">
   <div class="album-cover">
-    <img class="album-cover-img" src="/img/placeholder.png" alt="">
+    <img class="album-cover-img" src="<%= album.images[0].url %>" alt="">
   </div>
   <div class="album-tracks">
-    <h3>title</h3>
+    <h3><%= album.name %></h3>
     <ol class="album-tracks-list">
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
-      <li class="album-tracks-item">track</li>
+      <% if(tracks.length !== 0) { %>
+        <% tracks.forEach((track) => { %>
+          <li class="album-tracks-item">
+            <h4><%=track.name %></h4>
+          </li>
+        <% }) %>
+      <% } %>
     </ol>
   </div>
 </section>
