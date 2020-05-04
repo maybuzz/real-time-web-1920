@@ -35,18 +35,50 @@ app
 io.on('connection', function(socket) {
 	console.log('user connected ' + '(' + socket.id + ')')
 
-	socket.emit('welcomeMessage')
+  let id = socket.id
+  let userName = 'anonymous'
 
-  socket.emit('room')
+  // socket.on('set user', function(id) {
+  //   console.log("id", id);
+  //   const oldUsername = userName;
+  //   userName = id;
+  //   console.log(`user with id ${userName} connected`);
+  //   socket.emit('server message', `SERVER: Your username was changed to ${userName}.`);
+  //   socket.broadcast.emit('server message', `SERVER: User ${oldUsername} changed their name to ${userName}.`);
+  // });
 
-	socket.on('chatMessage', function(msg) {
-		socket.broadcast.emit('chatMessage', {message: msg})
-	})
+  socket.emit('server message', `SERVER: Welcome to the void.`);
+  socket.broadcast.emit('server message', `SERVER: ${userName} ${id} connected.`);
 
-	socket.on('disconnect', function() {
-		console.log('user disconnected ' + '(' + socket.id + ')')
-	})
+  socket.on('disconnect', function(){
+    console.log(`${userName} ${id} disconnected`);
+    io.emit('server message', `SERVER: ${userName} ${id} disconnected.`);
+  });
+
+  socket.on('chat message', function(msg) {
+    console.log('message: ' + msg);
+    io.emit('chat message', `${userName}: ${msg}`);
+  });
 })
+// io.on('connection', function(socket) {
+// 	console.log('user connected ' + '(' + socket.id + ')')
+//
+//   socket.emit('newConnection', {id: socket.id})
+//   socket.on('welcome', (data) => {
+//     console.log("server", socket.id);
+//   })
+//
+//   socket.emit('room')
+//
+// 	socket.on('chatMessage', function(msg) {
+// 		socket.broadcast.emit('chatMessage', {message: msg})
+// 	})
+//
+// 	socket.on('disconnect', function() {
+// 		console.log('user disconnected ' + '(' + socket.id + ')')
+//     io.emit('chat message', '')
+// 	})
+// })
 
 // PORT
 http.listen(port, function() {

@@ -53,9 +53,6 @@ async function room(req, res){
 
   const recent = await getDataWithToken(config_recent)
 
-  console.log(searchVal);
-  console.log("params", req.params);
-
   if (access_token === undefined ) {
     console.log("oops, session over")
     res.redirect(loginUri)
@@ -92,10 +89,7 @@ async function getRoom(req, res) {
   const recent = await getDataWithToken(config_recent)
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
-
-  console.log("album", album)
-  console.log("tracks", tracks)
-
+  
   if (access_token === undefined ) {
     console.log("oops, session over")
     res.redirect(loginUri)
@@ -114,9 +108,6 @@ async function searchAlbum(req, res){
   let access_token = req.session.access_token
   let loginUri = process.env.LOGIN_URI || 'http://localhost:3000/login'
 
-  console.log("token", access_token)
-  console.log("search", searchVal)
-
   if (access_token === undefined ) {
     console.log("oops, session over")
     res.redirect(loginUri)
@@ -134,8 +125,6 @@ async function searchAlbum(req, res){
 
   const recent = await getDataWithToken(config_recent)
   const data = await getDataWithToken(config_search)
-
-  console.log("data", data.albums.items)
 
   res.render('index', {
     recent: recent,

@@ -287,6 +287,7 @@ body {
   text-align: right;
   margin-left: auto;
   border-radius: 50px 50px 0 50px;
+  list-style-type: none;
 }
 
 .chat-msg-user-text {
