@@ -31,6 +31,24 @@ app
 	.set('views', path.join(__dirname, 'src/views'))
   .use(express.static('src/static'))
 
+// SOCKETS
+io.on('connection', function(socket) {
+	console.log('user connected ' + '(' + socket.id + ')')
+
+	socket.emit('welcomeMessage')
+
+  socket.emit('room')
+
+	socket.on('chatMessage', function(msg) {
+		socket.broadcast.emit('chatMessage', {message: msg})
+	})
+
+	socket.on('disconnect', function() {
+		console.log('user disconnected ' + '(' + socket.id + ')')
+	})
+})
+
+// PORT
 http.listen(port, function() {
 	console.log('listening on: ' + port)
 })

@@ -11,11 +11,11 @@ let redirect_uri =
   process.env.REDIRECT_URI ||
   'http://localhost:3000/'
 
-// let redirect_uri =
-//   process.env.REDIRECT_URI ||
-//   'https://linernotez.herokuapp.com/spotify/callback'
+router
+  .get('/login', oauthLogin)
+  .get('/callback', callback)
 
-router.get('/login', function(req, res) {
+function oauthLogin (req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -23,9 +23,9 @@ router.get('/login', function(req, res) {
       scope: 'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played user-read-playback-state',
       redirect_uri
     }))
-})
+}
 
-router.get('/callback', function(req, res) {
+function callback (req, res) {
   let code = req.query.code || null
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -49,6 +49,6 @@ router.get('/callback', function(req, res) {
     res.redirect(uri)
     console.log(access_token);
   })
-})
+}
 
 module.exports = router

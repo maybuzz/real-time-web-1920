@@ -1,0 +1,11 @@
+<li class="result-item">
+<a class="result-link" href="/room">
+  <h4 class="rooms-list-item-title result-name"><%= album.name %></h4>
+
+    <% if (album.images.length !== 0) { %>
+      <img class="result-img" src="<%= album.images[0].url %>" alt="">
+    <% } else { %>
+      <img class="result-img" src="/img/placeholder.png" alt="placeholder">
+    <% } %>
+  </a>
+</li>

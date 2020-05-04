@@ -1,5 +1,4 @@
-console.log("helper");
-
+console.log("helper")
 
 const fetch = require('node-fetch')
 
@@ -13,3 +12,5 @@ function getDataWithToken({access_token, url}){
     })
         .then(response=> response.json())
 }
+
+module.exports = {getDataWithToken}

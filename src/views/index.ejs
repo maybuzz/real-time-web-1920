@@ -9,7 +9,41 @@
   <main class="main-home">
 
     <section class="main-online">
+      <header class="main-rooms-header">
+        <ul class="title-list">
+          <li><h2 class="rooms-title">rooms</h2></li>
+          <li><h2 class="">//</h2></li>
+          <li><a id="newRoomBtn" class="rooms-new">new room</a></li>
+        </ul>
+      </header>
+      <div id="addRoomContainer" class="invisible addRoom">
+        <%- include ("partials/search"); -%>
+        <ul class="result-list">
+          <% if(search.length !== 0) { %>
+            <% search.forEach((album) => { %>
+              <%- include ("partials/search-result", {album: album}); -%>
+            <% }) %>
+          <% } %>
+        </ul>
+      </div>
+
       <article class="">
+        <h3 class="rooms-subtitle">- latest</h3>
+        <ul class="rooms-list">
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+
+          <%- include ("partials/room-item"); -%>
+        </ul>
+      </article>
+      <!-- <article class="">
         <h3 class="online-title">online</h3>
         <ul class="online-list">
           <%- include ("partials/online-item"); -%>
@@ -19,11 +53,11 @@
           <%- include ("partials/online-item"); -%>
 
         </ul>
-      </article>
+      </article> -->
     </section>
 
     <section class="main-rooms">
-      <header class="main-rooms-header">
+      <!-- <header class="main-rooms-header">
         <ul class="title-list">
           <li><h2 class="rooms-title">rooms</h2></li>
           <li><h2 class="">//</h2></li>
@@ -47,7 +81,7 @@
 
           <%- include ("partials/room-item"); -%>
         </ul>
-      </article>
+      </article> -->
 
 
     </section>

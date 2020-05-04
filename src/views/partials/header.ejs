@@ -1,5 +1,8 @@
 <header class="header">
+  <a class="btn btn--back" href="/"><</a>
   <a class="header-img" href="#">
-    <img class="" src="/img/placeholder.png" alt="">
+    <% if(me_pic.length !== 0) { %>
+      <img class="" src="<%=me_pic[0].url %>" alt="">
+    <% }) %>
   </a>
 </header>
