@@ -8,10 +8,17 @@
       <% if(tracks.length !== 0) { %>
         <% tracks.forEach((track) => { %>
           <li class="album-tracks-item">
-            <h4><%=track.name %></h4>
+            <a href="/room/:id/<%=track.uri%>"><%=track.name %></a>
           </li>
         <% }) %>
       <% } %>
     </ol>
+  </div>
+  <div class="album-controls">
+    <!-- <div class="album-controls-play"> -->
+      <a id="play" class="album-controls-play controls-btn" href="/room/:id">
+        play
+      </a>
+    <!-- </div> -->
   </div>
 </section>

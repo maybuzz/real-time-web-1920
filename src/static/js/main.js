@@ -2,6 +2,7 @@
   const form = document.querySelector('.chat-form')
   const ul = document.querySelector('#messages')
   const input = document.querySelector('#message')
+  const play = document.querySelector('#play')
 
   console.log("have fun");
 
@@ -48,6 +49,24 @@
     newLi.textContent = msg
     ul.append(newLi)
   })
+
+  play.addEventListener('click', track => {
+
+    track.preventDefault()
+    console.log("start play");
+
+    socket.emit('play track', input.value)
+
+    socket.on('play track', function(track){
+
+      console.log("track", track);
+      const newLi = document.createElement('li')
+      newLi.setAttribute('class', 'server-msg')
+      newLi.textContent = "hoi"
+      ul.append(newLi)
+    })
+  })
+
 
   // socket.on('server message', (data) => {
   //

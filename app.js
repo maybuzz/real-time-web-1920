@@ -26,7 +26,7 @@ app
   .use(oauth)
   .use('/', routes)
   .use('/login', routes)
-  .use('/room', routes)
+  .use('/room/:id', routes)
 	.set('view engine', 'ejs')
 	.set('views', path.join(__dirname, 'src/views'))
   .use(express.static('src/static'))
@@ -59,7 +59,13 @@ io.on('connection', function(socket) {
     console.log('message: ' + msg);
     io.emit('chat message', `${userName}: ${msg}`);
   });
+
+  socket.on('play track', function(track) {
+    console.log('track: ' + track);
+    io.emit('play track', `${track}`);
+  });
 })
+
 // io.on('connection', function(socket) {
 // 	console.log('user connected ' + '(' + socket.id + ')')
 //

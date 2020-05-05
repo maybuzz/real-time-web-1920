@@ -178,7 +178,7 @@ body {
 .album {
   background-color: var(--dark);
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 50% 20%;
   padding: 0 2rem;
   height: 13.5rem;
 }
@@ -206,6 +206,21 @@ body {
 
 .album-tracks-item:hover, .album-tracks-item:focus {
   color: var(--hover);
+}
+
+.album-controls {
+
+}
+
+.album-controls-play {
+
+}
+
+.controls-btn {
+  border-radius: 100px;
+  background-color: #fff;
+  color: #111;
+  padding: 2rem; 
 }
 
 /* ROOM: CHAT */
@@ -252,6 +267,12 @@ body {
 
 .chat-form-btn:hover, .chat-form-btn:focus {
   background-color: var(--hover);
+}
+
+.server-msg {
+  text-align: center;
+  color: #222;
+  list-style-type: none;
 }
 
 .chat-msg {

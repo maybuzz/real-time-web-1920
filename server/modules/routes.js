@@ -15,13 +15,39 @@ router.post('/', searchAlbum)
 async function index(req,res){
   let access_token = req.session.access_token
   let loginUri = process.env.LOGIN_URI || 'http://localhost:3000/login'
+  let cover = []
 
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
             access_token
         }
 
+  const config_player = {
+            url: `https://api.spotify.com/v1/me/player`,
+            access_token
+        }
+
+  const config_current = {
+            url: `https://api.spotify.com/v1/me/player/currently-playing`,
+            access_token
+        }
+
   const recent = await getDataWithToken(config_recent)
+
+  // try {
+  //   const cover = await getDataWithToken(config_current)
+  //   console.log("succes", cover.item);
+  // } catch (e) {
+  //   const cover = await getDataWithToken(config_recent)
+  //   console.log("meh", cover);
+  // }
+
+  try {
+    const player = await getDataWithToken(config_player)
+  } catch (e) {
+    console.log("woops", e);
+    console.log("spotify moet actief zijn om de applicatie te starten");
+  }
 
   console.log("token", access_token)
 
@@ -89,7 +115,17 @@ async function getRoom(req, res) {
   const recent = await getDataWithToken(config_recent)
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
-  
+
+  // console.log('tracks', tracks.items[0]);
+
+  console.log('album', album.uri);
+
+
+  for (var i = 0; i < tracks.items.length; i++) {
+    const trackUri = tracks.items[i].uri
+    console.log(tracks.items[i].name, trackUri);
+  }
+
   if (access_token === undefined ) {
     console.log("oops, session over")
     res.redirect(loginUri)
