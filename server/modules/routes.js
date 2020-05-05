@@ -4,11 +4,11 @@ const express   = require('express')
 const fetch = require('node-fetch')
 const router    = express.Router()
 const {getDataWithToken} = require('./helper')
+const {playAlbum} = require('./helper')
 const {oauthLogin} = require('./oauth')
 
 router.get('/', index)
 router.get('/login', login)
-router.get('/room', room)
 router.get('/room/:id', getRoom)
 router.post('/', searchAlbum)
 
@@ -67,29 +67,6 @@ function login(req,res){
   res.render('login')
 }
 
-async function room(req, res){
-  let searchVal = req.session.searchVal
-  let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://localhost:3000/login'
-
-  const config_recent = {
-            url: `https://api.spotify.com/v1/me/player/recently-played`,
-            access_token
-        }
-
-  const recent = await getDataWithToken(config_recent)
-
-  if (access_token === undefined ) {
-    console.log("oops, session over")
-    res.redirect(loginUri)
-  } else {
-    res.render('room', {
-      recent: recent,
-    })
-  }
-
-}
-
 async function getRoom(req, res) {
   const albumId = req.params.id
   req.session.albumId = albumId
@@ -112,14 +89,22 @@ async function getRoom(req, res) {
             access_token
         }
 
+  const config_playAlbum = {
+            url: `https://api.spotify.com/v1/me/player/play`,
+            access_token,
+            albumId
+        }
+
   const recent = await getDataWithToken(config_recent)
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
 
+  const play = await playAlbum(config_playAlbum)
+
+  console.log("play", play);
   // console.log('tracks', tracks.items[0]);
 
-  console.log('album', album.uri);
-
+  console.log('album', album);
 
   for (var i = 0; i < tracks.items.length; i++) {
     const trackUri = tracks.items[i].uri

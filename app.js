@@ -2,7 +2,10 @@ console.log("app");
 
 const routes     = require('./server/modules/routes')
 const oauth      = require('./server/modules/oauth')
+const {playAlbum} = require('./server/modules/helper')
+
 const bodyParser = require('body-parser')
+const fetch = require('node-fetch')
 const path       = require('path')
 const ejs        = require('ejs')
 const session    = require('express-session')
@@ -38,6 +41,10 @@ io.on('connection', function(socket) {
   let id = socket.id
   let userName = 'anonymous'
 
+  // const albumId = req.params.id
+
+  // console.log("album", albumId);
+
   // socket.on('set user', function(id) {
   //   console.log("id", id);
   //   const oldUsername = userName;
@@ -60,9 +67,10 @@ io.on('connection', function(socket) {
     io.emit('chat message', `${userName}: ${msg}`);
   });
 
-  socket.on('play track', function(track) {
-    console.log('track: ' + track);
-    io.emit('play track', `${track}`);
+  socket.on('play album', function(album) {
+    console.log('album: ' + album);
+
+    io.emit('play track', `${album}`);
   });
 })
 

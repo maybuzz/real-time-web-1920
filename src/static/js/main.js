@@ -2,7 +2,7 @@
   const form = document.querySelector('.chat-form')
   const ul = document.querySelector('#messages')
   const input = document.querySelector('#message')
-  const play = document.querySelector('#play')
+  const play = document.querySelector('.play')
 
   console.log("have fun");
 
@@ -50,12 +50,12 @@
     ul.append(newLi)
   })
 
-  play.addEventListener('click', track => {
+  play.addEventListener('click', (track) => {
 
     track.preventDefault()
-    console.log("start play");
+    console.log("start play", play.id);
 
-    socket.emit('play track', input.value)
+    socket.emit('play album', play.id)
 
     socket.on('play track', function(track){
 
