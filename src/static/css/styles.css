@@ -72,6 +72,7 @@ body {
     "chat chat chat chat chat online"
     "chat chat chat chat chat online";
   height: 70%;
+  background-color: var(--light);
 }
 
 .main-chat {
@@ -155,7 +156,8 @@ body {
   padding-right: 1.5em;
 }
 .rooms-list-item-link:hover h4, .rooms-list-item-link:focus h4{
-  color: var(--hover);
+  background-color: var(--hover);
+  color: var(--light);
 }
 .rooms-list-item-link:hover img, .rooms-list-item-link:focus img{
   border-color: var(--hover);
@@ -251,7 +253,7 @@ body {
   width: 100%;
   position: absolute;
   display: flex;
-  padding: .75rem 1.75rem;
+  padding: .75rem 0;
   margin-top: auto;
   background-color: var(--dark);
 }
@@ -381,6 +383,8 @@ body {
   width: 70vw;
   font-size: 1em;
   padding-left: 1rem;
+  border: none;
+  border-radius: 50px 0 0 50px;
 }
 
 .result-list {
@@ -397,7 +401,8 @@ body {
 }
 
 .result-item:hover h4, .result-item:focus h4 {
-  color: var(--hover);
+  background-color: var(--hover);
+  color: var(--light);
 }
 
 .result-item:first-of-type {
@@ -436,9 +441,11 @@ body {
 
 #submit {
   width: 25vw;
-  background-color: pink;
-  color: #111;
+  background-color: palevioletred;
+  color: #fff;
   font-size: 1rem;
+  border: none;
+  border-radius: 0 50px 50px 0;
 }
 
 #submit:hover, #submit:focus {
