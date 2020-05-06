@@ -100,7 +100,7 @@
 
     const newLi = document.createElement('li')
     newLi.setAttribute('class', 'server-msg')
-    newLi.textContent = "hoi"
+    newLi.textContent = "start playing"
     ul.append(newLi)
   })
 
@@ -108,7 +108,7 @@
 
     const newLi = document.createElement('li')
     newLi.setAttribute('class', 'server-msg')
-    newLi.textContent = "doei"
+    newLi.textContent = "stop playing"
     ul.append(newLi)
   })
 
@@ -116,7 +116,7 @@
 
     const newLi = document.createElement('li')
     newLi.setAttribute('class', 'server-msg')
-    newLi.textContent = "dikke doei"
+    newLi.textContent = "aju paraplu"
     ul.append(newLi)
   })
 

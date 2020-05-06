@@ -87,9 +87,9 @@ io.on('connection', function(socket) {
 
     playAlbum(album)
 
-    console.log('album: ', album.uri);
-
-    console.log("token", album.token);
+    // console.log('album: ', album.uri);
+    //
+    // console.log("token", album.token);
 
     io.emit('play track', `${album}`);
   });
@@ -112,9 +112,9 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    console.log('album: ', album.uri);
-
-    console.log("token", album.token);
+    // console.log('album: ', album.uri);
+    //
+    // console.log("token", album.token);
 
     io.emit('pause track', `${album}`);
   });
