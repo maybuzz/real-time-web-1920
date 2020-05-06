@@ -19,6 +19,7 @@
       <div id="addRoomContainer" class="addRoom">
           <%- include ("partials/search"); -%>
           <ul class="result-list">
+            <h1 class="alert">zorg dat spotify actief (playing) is</h1>
             <% if(search.length !== 0) { %>
               <% search.forEach((album) => { %>
                 <%- include ("partials/search-result", {album: album}); -%>
@@ -28,7 +29,7 @@
       </div>
 
       <article class="">
-        <h3 class="rooms-subtitle">- latest</h3>
+        <h3 class="rooms-subtitle">- current rooms</h3>
         <ul class="rooms-list">
 
           <li class="rooms-list-item">

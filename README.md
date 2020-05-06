@@ -14,7 +14,7 @@
 - [Resources](#Resources)
 
 ## Live demo
-[Click here](...) to see my live demo.
+[Click here](https://get-a-recordroom.herokuapp.com/) to see my live demo.
 
 ## Install
 To install this project you'll have to fork this repository and open your terminal

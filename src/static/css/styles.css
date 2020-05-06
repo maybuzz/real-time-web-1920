@@ -46,11 +46,11 @@ body {
 }
 
 .main-home {
-  display: grid;
+  /* display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
     "online"
-    "rooms";
+    "rooms"; */
 }
 .main-online {
   grid-area: online;
@@ -364,6 +364,9 @@ body {
 }
 
 /* SEARCH */
+.alert {
+  
+}
 .invisible {
   display: none;
 }
