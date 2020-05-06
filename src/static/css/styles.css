@@ -223,6 +223,11 @@ body {
   padding: 2rem;
 }
 
+.controls-btn:hover, .controls-btn:focus {
+  color: var(--light);
+  background-color: var(--hover);
+}
+
 /* ROOM: CHAT */
 .chat {
   grid-area: chat;
