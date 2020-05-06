@@ -30,7 +30,7 @@ To install this project you'll have to fork this repository and open your termin
   git clone https://github.com/your-user-name/real-time-web-1920/
 
   npm install
-  
+
   node app.js
 ```
 
@@ -50,7 +50,50 @@ Finally, all requests to the Spotify API require authentication. This can be don
 - `leaving the room` -> Leaving the room will stop/pause the listening session. This way users will need to join a room to listen to an album.
 
 ## API
-The Spotify API has a lot of different endpoint you could use. For this application we'll be using;
+The Spotify API has a lot of different endpoint you could use. Every endpoint will provide a data object with lots of data, depending on your endpoint. For example, album data will look like this:
+
+```bash
+  album {
+    album_type: 'single',
+    artists: [
+      {
+        external_urls: [Object],
+        href: 'https://api.spotify.com/v1/artists/5vBSrE1xujD2FXYRarbAXc',
+        id: '5vBSrE1xujD2FXYRarbAXc',
+        name: 'Years & Years',
+        type: 'artist',
+        uri: 'spotify:artist:5vBSrE1xujD2FXYRarbAXc'
+      }
+    ],
+    available_markets: [ ... ],
+    copyrights: [ { ... }, { ... } ],
+    external_ids: { upc: '00602537923267' },
+    external_urls: { spotify: 'https://open.spotify.com/album/2dzxJbiJKhQo2aqUrtjZP0' },
+    genres: [],
+    href: 'https://api.spotify.com/v1/albums/2dzxJbiJKhQo2aqUrtjZP0',
+    id: '2dzxJbiJKhQo2aqUrtjZP0',
+    images: [ { ... }, { ... }, { ... } ],
+    label: 'Polydor Records',
+    name: 'Take Shelter',
+    popularity: 69,
+    release_date: '2014-01-01',
+    release_date_precision: 'day',
+    total_tracks: 4,
+    tracks: {
+      href: 'https://api.spotify.com/v1/albums/2dzxJbiJKhQo2aqUrtjZP0/tracks?offset=0&limit=50',
+      items: [ [Object], [Object], [Object], [Object] ],
+      limit: 50,
+      next: null,
+      offset: 0,
+      previous: null,
+      total: 4
+    },
+    type: 'album',
+    uri: 'spotify:album:2dzxJbiJKhQo2aqUrtjZP0'
+  }
+```
+
+For this application we'll be using;
 - `/search?q=name:{...}&type=album` -> to search for an album, use user input to complete the query
 - `/albums`, `/albums/{id}`-> get several albums or get a specific album using the Spotify ID
 - `/albums/{id}/tracks` -> get the tracks from a specific album using the Spotify ID  
