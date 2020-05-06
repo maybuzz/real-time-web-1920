@@ -2,7 +2,7 @@
 
 "Get a Room" is a real-time application using the spotify API and socket.io. Users can join or create rooms to listen to a certain album together. Within the chatroom users can discuss the songs on the album; talk about the artist, share facts about the album, etc.
 
-![prototype 2](/img/prototype2.png)
+![prototype 2](/img/prototype3.png)
 
 ## Table of contents
 - [Live demo](#Live-demo)
