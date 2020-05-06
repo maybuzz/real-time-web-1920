@@ -208,6 +208,10 @@ body {
   color: var(--hover);
 }
 
+.album-tracks-item a {
+  color: mediumslateblue;
+}
+
 .album-controls {
 
 }
@@ -244,13 +248,12 @@ body {
 }
 
 .chat-form {
-  width: 70%;
+  width: 100%;
   position: absolute;
-  bottom: 0;
   display: flex;
   padding: .75rem 1.75rem;
   margin-top: auto;
-  background-color: var(--light);
+  background-color: var(--dark);
 }
 
 .chat-form-input {
@@ -272,6 +275,7 @@ body {
 
 .chat-form-btn:hover, .chat-form-btn:focus {
   background-color: var(--hover);
+  color: var(--light);
 }
 
 .server-msg {
@@ -368,6 +372,15 @@ body {
 
 .rooms-search-form {
   padding-left: 1.5em;
+  display: flex;
+  position: absolute;
+  height: 2rem;
+}
+
+.rooms-search-form-input {
+  width: 70vw;
+  font-size: 1em;
+  padding-left: 1rem;
 }
 
 .result-list {
@@ -419,4 +432,16 @@ body {
 
 .btn:hover, .btn:focus {
   color: var(--hover);
+}
+
+#submit {
+  width: 25vw;
+  background-color: pink;
+  color: #111;
+  font-size: 1rem;
+}
+
+#submit:hover, #submit:focus {
+  color: var(--light);
+  background-color: var(--hover);
 }
