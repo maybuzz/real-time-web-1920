@@ -11,6 +11,7 @@
 - [API](#API)
 - [Concept](#Concept)
 - [Data](#DLC)
+- [Snippets](#Snippets)
 - [Checklist](#Checklist)
 - [To-do](#To-do)
 - [Credits](#Credits)
