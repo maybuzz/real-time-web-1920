@@ -365,7 +365,12 @@ body {
 
 /* SEARCH */
 .alert {
-  
+  text-align: center;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 11.5%;
 }
 .invisible {
   display: none;
