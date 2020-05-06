@@ -73,6 +73,7 @@ Your profile shows your Top Artists and -Songs. This tells other users a lot abo
   - [ ] Top artists/tracks
 - [ ] Work with database to store data & messages etc.
 - [ ] Use socket.io for everything
+- [ ] Make responsive (mobile, tablet)
 
 ## To-do
 - [ ] Data life cycle iteration

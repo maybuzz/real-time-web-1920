@@ -371,6 +371,7 @@ body {
   left: 20%;
   right: 20%;
   top: 11.5%;
+  color: var(--hover);
 }
 .invisible {
   display: none;
