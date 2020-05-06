@@ -54,6 +54,66 @@ Your profile shows your Top Artists and -Songs. This tells other users a lot abo
 ### DLC
 ![DLC](/img/DLC.png)
 
+## Snippets
+There are a few elements in my code that I'm very proud of. For example, the part where I send my album data to the sockets. I struggles with this for a while, but I finally got it figured out.
+
+```js
+// snippet from main.js
+// this is the part where I change the control buttons and send an event to the server. Here I can handle the pause album event. Which is almost the same as the 'leave room' event below
+pause.addEventListener('click', (btn) => {
+
+  btn.preventDefault()
+
+  const data = {
+    // uri & token data
+  }
+
+  play.classList.toggle('invisible')
+  pause.classList.toggle('invisible')
+
+  socket.emit('pause album', data)
+
+})
+```
+
+The following code snippets show my app handling an event, both server- and client side. I struggled with figuring out how to do a PUT request using oAuth. This took a lot of time and it still needs a lot of thinking, but I felt like I needed to move on. Next time, I will for sure use a database to store my data and tokens, cause I feel like this will make a lot of thinks much easier.
+
+```js
+// snippet from app.js
+// this is the part where I handle the event of a user leaving the room. First I pause the album playing, then I emit the event to the client.
+socket.on('leave room', function(album) {
+
+  function pauseAlbum(album){
+
+    return fetch(`https://api.spotify.com/v1/me/player/pause`,
+    {
+      method: "PUT",
+      headers: {
+        'Authorization': 'Bearer ' + album.token
+      },
+      body: JSON.stringify({
+        context_uri: album.uri
+      })
+    }).then((response) => response.json())
+  }
+
+  pauseAlbum(album)
+
+  io.emit('leave room')
+})
+```
+```js
+// snippet from main.js
+// on the server I emitted a 'leave room' event. Now I can respond to this event on the client, using the same event ('leave room'). This creates a server-msg saying bye.
+socket.on('leave room', function(track){
+
+  const newLi = document.createElement('li')
+  newLi.setAttribute('class', 'server-msg')
+  newLi.textContent = "aju paraplu"
+  ul.append(newLi)
+})
+```
+
 ## Checklist
 - [x] Search for album
 - [x] Get room with album + tracks
@@ -74,6 +134,7 @@ Your profile shows your Top Artists and -Songs. This tells other users a lot abo
 - [ ] Work with database to store data & messages etc.
 - [ ] Use socket.io for everything
 - [ ] Make responsive (mobile, tablet)
+- [ ] Multi user support: broadcast track to all sockets.
 
 ## To-do
 - [ ] Data life cycle iteration
