@@ -13,34 +13,45 @@
         <ul class="title-list">
           <li><h2 class="rooms-title">rooms</h2></li>
           <li><h2 class="">//</h2></li>
-          <li><a id="newRoomBtn" class="rooms-new">new room</a></li>
+          <!-- <li><a id="newRoomBtn" class="rooms-new">new room</a></li> -->
         </ul>
       </header>
       <div id="addRoomContainer" class="addRoom">
-        <%- include ("partials/search"); -%>
-        <ul class="result-list">
-          <% if(search.length !== 0) { %>
-            <% search.forEach((album) => { %>
-              <%- include ("partials/search-result", {album: album}); -%>
-            <% }) %>
-          <% } %>
-        </ul>
+          <%- include ("partials/search"); -%>
+          <ul class="result-list">
+            <% if(search.length !== 0) { %>
+              <% search.forEach((album) => { %>
+                <%- include ("partials/search-result", {album: album}); -%>
+              <% }) %>
+            <% } %>
+          </ul>
       </div>
 
       <article class="">
         <h3 class="rooms-subtitle">- latest</h3>
         <ul class="rooms-list">
-          <%- include ("partials/room-item"); -%>
 
-          <%- include ("partials/room-item"); -%>
+          <li class="rooms-list-item">
+            <a class="rooms-list-item-link" href="/room1">
+              <h4 class="rooms-list-item-title"><%= album1.name %></h4>
+              <img class="rooms-list-item-cover" src="<%= album1.images[0].url %>" alt="">
+            </a>
+          </li>
 
-          <%- include ("partials/room-item"); -%>
+          <li class="rooms-list-item">
+            <a class="rooms-list-item-link" href="/room2">
+              <h4 class="rooms-list-item-title"><%= album2.name %></h4>
+              <img class="rooms-list-item-cover" src="<%= album2.images[0].url %>" alt="">
+            </a>
+          </li>
 
-          <%- include ("partials/room-item"); -%>
+          <li class="rooms-list-item">
+            <a class="rooms-list-item-link" href="/room3">
+              <h4 class="rooms-list-item-title"><%= album3.name %></h4>
+              <img class="rooms-list-item-cover" src="<%= album3.images[0].url %>" alt="">
+            </a>
+          </li>
 
-          <%- include ("partials/room-item"); -%>
-
-          <%- include ("partials/room-item"); -%>
         </ul>
       </article>
       <!-- <article class="">

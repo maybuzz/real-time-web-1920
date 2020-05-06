@@ -2,10 +2,9 @@ console.log("app");
 
 const routes     = require('./server/modules/routes')
 const oauth      = require('./server/modules/oauth')
-const {playAlbum} = require('./server/modules/helper')
 
 const bodyParser = require('body-parser')
-const fetch = require('node-fetch')
+const fetch      = require('node-fetch')
 const path       = require('path')
 const ejs        = require('ejs')
 const session    = require('express-session')
@@ -23,13 +22,16 @@ app
   .use(session({
         secret: 'get-a-room',
         cookie: {secure:false},
-        resave: false,
+        resave: true,
         saveUninitialized: true
     }))
   .use(oauth)
   .use('/', routes)
   .use('/login', routes)
   .use('/room/:id', routes)
+  .use('/room1', routes)
+  .use('/room2', routes)
+  .use('/room3', routes)
 	.set('view engine', 'ejs')
 	.set('views', path.join(__dirname, 'src/views'))
   .use(express.static('src/static'))
@@ -68,10 +70,76 @@ io.on('connection', function(socket) {
   });
 
   socket.on('play album', function(album) {
-    console.log('album: ' + album);
+
+    function playAlbum(album){
+
+      return fetch(`https://api.spotify.com/v1/me/player/play`,
+      {
+        method: "PUT",
+        headers: {
+          'Authorization': 'Bearer ' + album.token
+        },
+        body: JSON.stringify({
+          context_uri: album.uri
+        })
+      }).then((response) => response.json())
+    }
+
+    playAlbum(album)
+
+    console.log('album: ', album.uri);
+
+    console.log("token", album.token);
 
     io.emit('play track', `${album}`);
   });
+
+  socket.on('pause album', function(album) {
+
+    function pauseAlbum(album){
+
+      return fetch(`https://api.spotify.com/v1/me/player/pause`,
+      {
+        method: "PUT",
+        headers: {
+          'Authorization': 'Bearer ' + album.token
+        },
+        body: JSON.stringify({
+          context_uri: album.uri
+        })
+      }).then((response) => response.json())
+    }
+
+    pauseAlbum(album)
+
+    console.log('album: ', album.uri);
+
+    console.log("token", album.token);
+
+    io.emit('pause track', `${album}`);
+  });
+
+  socket.on('leave room', function(album) {
+
+    function pauseAlbum(album){
+
+      return fetch(`https://api.spotify.com/v1/me/player/pause`,
+      {
+        method: "PUT",
+        headers: {
+          'Authorization': 'Bearer ' + album.token
+        },
+        body: JSON.stringify({
+          context_uri: album.uri
+        })
+      }).then((response) => response.json())
+    }
+
+    pauseAlbum(album)
+
+    io.emit('leave room', `${album}`);
+  });
+
 })
 
 // io.on('connection', function(socket) {

@@ -3,7 +3,7 @@
   --dark: #000;
   --course: #00B0FC;
   --light: #fff;
-  --hover: lightgreen;
+  --hover: tomato;
   --border: #fff;
   --msg-user: #ccc;
   --msg-me: #11aa44;
@@ -39,7 +39,7 @@ body {
 .header-img img {
   height: 2.75em;
   float: right;
-  border: solid 2px var(--light);
+  /* border: solid 2px var(--light); */
 }
 .header-img:hover img {
   border-color: var(--hover);
@@ -220,7 +220,7 @@ body {
   border-radius: 100px;
   background-color: #fff;
   color: #111;
-  padding: 2rem; 
+  padding: 2rem;
 }
 
 /* ROOM: CHAT */
@@ -378,9 +378,14 @@ body {
   position: relative;
 }
 
+.result-item:hover h4, .result-item:focus h4 {
+  color: var(--hover);
+}
+
 .result-item:first-of-type {
   margin-left: 1.5em;
 }
+
 .result-item:last-of-type {
   padding-right: 1.5em;
 }
@@ -399,6 +404,8 @@ body {
   position: absolute;
   margin-top: 5.5rem;
 }
+
+
 
 /* BTN */
 .btn--back {

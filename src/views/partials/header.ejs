@@ -1,6 +1,10 @@
 <header class="header">
-  <a class="btn btn--back" href="/"><</a>
-  <a class="header-img" href="#">
-    <img class="" src="<%= recent.items[0].track.album.images[0].url %>" alt="">
+  <a class="btn btn--back" href="/">home</a>
+  <a class="header-img" href="">
+    <% if (recent.items) { %>
+      <img class="" src="<%= recent.items[0].track.album.images[0].url %>" alt="">
+    <% } else { %>
+      <img class="result-img" src="/img/placeholder.png" alt="placeholder">
+    <% } %>
   </a>
 </header>

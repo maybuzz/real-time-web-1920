@@ -9,7 +9,7 @@ require('dotenv').config()
 
 let redirect_uri =
   process.env.REDIRECT_URI ||
-  'http://localhost:3000/'
+  'http://get-a-recordroom.heroku.com/'
 
 router
   .get('/login', oauthLogin)
@@ -20,7 +20,7 @@ function oauthLogin (req, res) {
     querystring.stringify({
       response_type: 'code',
       client_id: process.env.CLIENT_ID,
-      scope: 'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played user-read-playback-state',
+      scope: 'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played user-read-playback-state user-modify-playback-state',
       redirect_uri
     }))
 }
@@ -44,7 +44,7 @@ function callback (req, res) {
 
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
-    let uri = process.env.FRONTEND_URI || 'http://localhost:3000/'
+    let uri = process.env.FRONTEND_URI || 'http://get-a-recordroom.heroku.com/'
     req.session.access_token = access_token
     res.redirect(uri)
     console.log(access_token);

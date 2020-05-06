@@ -16,8 +16,12 @@
   </div>
   <div class="album-controls">
     <!-- <div class="album-controls-play"> -->
-    <a id="<%= album.uri %>" class="play album-controls-play controls-btn" href="/room/:id">
+    <a id="<%= album.uri %>" class="play album-controls-play controls-btn" href="#play">
       play
+    </a>
+
+    <a id="<%= album.uri %>" class="pause album-controls-play controls-btn invisible" href="#pause">
+      pause
     </a>
     <!-- </div> -->
   </div>

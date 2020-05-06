@@ -3,6 +3,9 @@
   const ul = document.querySelector('#messages')
   const input = document.querySelector('#message')
   const play = document.querySelector('.play')
+  const pause = document.querySelector('.pause')
+  const footer = document.querySelector('.footer')
+  const btnBack = document.querySelector('.btn--back')
 
   console.log("have fun");
 
@@ -50,21 +53,71 @@
     ul.append(newLi)
   })
 
-  play.addEventListener('click', (track) => {
+  play.addEventListener('click', (btn) => {
 
-    track.preventDefault()
-    console.log("start play", play.id);
+    btn.preventDefault()
 
-    socket.emit('play album', play.id)
+    const data = {
+      uri: play.id,
+      token: footer.id
+    }
 
-    socket.on('play track', function(track){
+    play.classList.toggle('invisible')
+    pause.classList.remove('invisible')
 
-      console.log("track", track);
-      const newLi = document.createElement('li')
-      newLi.setAttribute('class', 'server-msg')
-      newLi.textContent = "hoi"
-      ul.append(newLi)
-    })
+    socket.emit('play album', data)
+
+  })
+
+  pause.addEventListener('click', (btn) => {
+
+    btn.preventDefault()
+
+    const data = {
+      uri: play.id,
+      token: footer.id
+    }
+
+    play.classList.toggle('invisible')
+    pause.classList.toggle('invisible')
+
+    socket.emit('pause album', data)
+
+  })
+
+  btnBack.addEventListener('click', (btn) => {
+
+    const data = {
+      uri: play.id,
+      token: footer.id
+    }
+
+    socket.emit('leave room', data)
+
+  })
+
+  socket.on('play track', function(track){
+
+    const newLi = document.createElement('li')
+    newLi.setAttribute('class', 'server-msg')
+    newLi.textContent = "hoi"
+    ul.append(newLi)
+  })
+
+  socket.on('pause track', function(track){
+
+    const newLi = document.createElement('li')
+    newLi.setAttribute('class', 'server-msg')
+    newLi.textContent = "doei"
+    ul.append(newLi)
+  })
+
+  socket.on('leave room', function(track){
+
+    const newLi = document.createElement('li')
+    newLi.setAttribute('class', 'server-msg')
+    newLi.textContent = "dikke doei"
+    ul.append(newLi)
   })
 
 
