@@ -28,9 +28,20 @@ To install this project you'll have to fork this repository and open your termin
   # insert your username to this link
   # put this in your terminal to clone the repo
   git clone https://github.com/your-user-name/real-time-web-1920/
+
   npm install
+  
   node app.js
 ```
+
+For this project you also need to get API keys from the Spotify API. To get them, you'll need to register your application [here](https://developer.spotify.com/dashboard/) and give some information such as a description and a redirect URI. After this you can get your ClientID and ClientSecret. Store these in a private file (.env) and make sure you add this file to your .gitignore so they stay private.
+
+```
+  CLIENT_ID=XXX
+  CLIENT_SECRET=XXX
+```
+
+Finally, all requests to the Spotify API require authentication. This can be done by sending a valid OAuth access token. Check out [this guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/) for more information about OAuth authorization.
 
 ## Events
 - `join room` & `leave room` -> If you're the first one to join a room you will become the host; you can play and pause the album. If you (the host) leave the room someone else will become the host. If the room is empty, it will stop playing the tracks of the album until a user joins the room again. Joining- and leaving a room will also fire socket events to show other users someone has joined/left the room.
