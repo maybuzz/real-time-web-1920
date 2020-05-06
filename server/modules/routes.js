@@ -16,7 +16,7 @@ router.post('/', searchAlbum)
 
 async function index(req,res){
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
   let cover = []
 
   const config_recent = {
@@ -100,7 +100,7 @@ async function getRoom(req, res) {
   req.session.albumId = albumId
   let searchVal = req.session.searchVal
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
@@ -155,7 +155,7 @@ async function searchAlbum(req, res){
   let searchVal = req.body.search
   req.session.searchVal = searchVal
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
   if (access_token === undefined ) {
     console.log("oops, session over")
@@ -211,7 +211,7 @@ async function getRoom1(req, res) {
   const albumId = '6R1VyRo1cFv2JDC1diCkPS'
   let searchVal = req.session.searchVal
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
@@ -255,7 +255,7 @@ async function getRoom2(req, res) {
   const albumId = '5VsdAamB1UmApCNBwdSFiw'
   let searchVal = req.session.searchVal
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
@@ -299,7 +299,7 @@ async function getRoom3(req, res) {
   const albumId = '04DOnsOFx8MrXA1JpjwZLH'
   let searchVal = req.session.searchVal
   let access_token = req.session.access_token
-  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.heroku.com/login'
+  let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
