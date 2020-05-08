@@ -43,10 +43,6 @@ io.on('connection', function(socket) {
   let id = socket.id
   let userName = 'anonymous'
 
-  // const albumId = req.params.id
-
-  // console.log("album", albumId);
-
   // socket.on('set user', function(id) {
   //   console.log("id", id);
   //   const oldUsername = userName;
@@ -56,18 +52,18 @@ io.on('connection', function(socket) {
   //   socket.broadcast.emit('server message', `SERVER: User ${oldUsername} changed their name to ${userName}.`);
   // });
 
-  socket.emit('server message', `SERVER: Welcome to the void.`);
-  socket.broadcast.emit('server message', `SERVER: ${userName} ${id} connected.`);
+  socket.emit('server message', `Welcome to the album.`)
+  socket.broadcast.emit('server message', `${userName} ${id} connected.`)
 
   socket.on('disconnect', function(){
-    console.log(`${userName} ${id} disconnected`);
-    io.emit('server message', `SERVER: ${userName} ${id} disconnected.`);
-  });
+    console.log(`${userName} ${id} disconnected`)
+    io.emit('server message', `${userName} ${id} disconnected.`)
+  })
 
   socket.on('chat message', function(msg) {
-    console.log('message: ' + msg);
-    io.emit('chat message', `${userName}: ${msg}`);
-  });
+    console.log('message: ' + msg)
+    io.emit('chat message', `${userName}: ${msg}`)
+  })
 
   socket.on('play album', function(album) {
 
@@ -91,7 +87,7 @@ io.on('connection', function(socket) {
     //
     // console.log("token", album.token);
 
-    io.emit('play track', `${album}`);
+    socket.broadcast.emit('play track', `${album}`)
   });
 
   socket.on('pause album', function(album) {
@@ -112,11 +108,7 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    // console.log('album: ', album.uri);
-    //
-    // console.log("token", album.token);
-
-    io.emit('pause track', `${album}`);
+    socket.broadcast.emit('pause track', `${album}`);
   });
 
   socket.on('leave room', function(album) {
@@ -141,26 +133,6 @@ io.on('connection', function(socket) {
   });
 
 })
-
-// io.on('connection', function(socket) {
-// 	console.log('user connected ' + '(' + socket.id + ')')
-//
-//   socket.emit('newConnection', {id: socket.id})
-//   socket.on('welcome', (data) => {
-//     console.log("server", socket.id);
-//   })
-//
-//   socket.emit('room')
-//
-// 	socket.on('chatMessage', function(msg) {
-// 		socket.broadcast.emit('chatMessage', {message: msg})
-// 	})
-//
-// 	socket.on('disconnect', function() {
-// 		console.log('user disconnected ' + '(' + socket.id + ')')
-//     io.emit('chat message', '')
-// 	})
-// })
 
 // PORT
 http.listen(port, function() {

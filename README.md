@@ -107,7 +107,7 @@ The chatrooms in this app are created by users and revolve around different albu
 Your profile shows your Top Artists and -Songs. This tells other users a lot about your use of Spotify and maybe it will even spark a new friendship. Who knows :)
 
 ### DLC
-![DLC](/img/DLC.png)
+![DLC](/img/DLC2.png)
 
 ## Snippets
 There are a few elements in my code that I'm very proud of. For example, the part where I send my album data to the sockets. I struggles with this for a while, but I finally got it figured out.
