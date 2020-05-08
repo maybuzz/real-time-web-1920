@@ -65,7 +65,7 @@
     play.classList.toggle('invisible')
     pause.classList.remove('invisible')
 
-    socket.broadcast.emit('play album', data)
+    socket.emit('play album', data)
 
   })
 
@@ -81,7 +81,7 @@
     play.classList.toggle('invisible')
     pause.classList.toggle('invisible')
 
-    socket.broadcast.emit('pause album', data)
+    socket.emit('pause album', data)
 
   })
 
