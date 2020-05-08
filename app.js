@@ -87,7 +87,7 @@ io.on('connection', function(socket) {
     //
     // console.log("token", album.token);
 
-    socket.broadcast.emit('play track', `${album}`)
+    io.broadcast.emit('play track', `${album}`)
   });
 
   socket.on('pause album', function(album) {
@@ -108,7 +108,7 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    socket.broadcast.emit('pause track', `${album}`);
+    io.broadcast.emit('pause track', `${album}`);
   });
 
   socket.on('leave room', function(album) {
