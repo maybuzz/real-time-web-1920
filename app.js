@@ -87,7 +87,7 @@ io.on('connection', function(socket) {
     //
     // console.log("token", album.token);
 
-    io.emit('play track', `${album}`)
+    socket.emit('play track', `${album}`)
   });
 
   socket.on('pause album', function(album) {
