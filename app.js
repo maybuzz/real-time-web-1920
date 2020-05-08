@@ -108,7 +108,7 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    io.emit('pause track', `${album}`);
+    socket.emit('pause track', `${album}`);
   });
 
   socket.on('leave room', function(album) {
@@ -129,7 +129,7 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    io.emit('leave room', `${album}`);
+    socket.emit('leave room', `${album}`);
   });
 
 })
