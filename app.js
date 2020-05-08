@@ -91,7 +91,7 @@ io.on('connection', function(socket) {
     //
     // console.log("token", album.token);
 
-    io.broadcast.emit('play track', `${album}`);
+    io.emit('play track', `${album}`);
   });
 
   socket.on('pause album', function(album) {
@@ -116,7 +116,7 @@ io.on('connection', function(socket) {
     //
     // console.log("token", album.token);
 
-    io.broadcast.emit('pause track', `${album}`);
+    io.emit('pause track', `${album}`);
   });
 
   socket.on('leave room', function(album) {
@@ -137,7 +137,7 @@ io.on('connection', function(socket) {
 
     pauseAlbum(album)
 
-    io.broadcast.emit('leave room', `${album}`);
+    io.emit('leave room', `${album}`);
   });
 
 })
