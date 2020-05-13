@@ -14,4 +14,4 @@ function getDataWithToken({access_token, url}){
 }
 
 
-module.exports = {getDataWithToken}
+module.exports = { getDataWithToken }
