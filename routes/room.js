@@ -7,8 +7,6 @@ async function room(req, res) {
   let access_token = req.cookies.access_token
   let loginUri = process.env.LOGIN_URI || 'http://get-a-recordroom.herokuapp.com/login'
 
-  console.log("id", req.cookies.albumId);
-
   const config_recent = {
             url: `https://api.spotify.com/v1/me/player/recently-played`,
             access_token

@@ -33,4 +33,4 @@ app.get('/room2', getRoom2)
 app.get('/room3', getRoom3)
 
 // search request
-app.post('/', search)
+app.post('/home', search)

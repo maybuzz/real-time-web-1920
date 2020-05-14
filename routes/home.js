@@ -60,8 +60,6 @@ async function home(req,res){
     console.log("spotify moet actief zijn om de applicatie te starten");
   }
 
-  console.log("token", access_token)
-
   if (access_token === undefined ) {
     console.log("oops, session over")
     res.redirect(loginUri)
