@@ -3,6 +3,8 @@ const querystring   = require('querystring')
 require('dotenv').config()
 
 function login (req, res) {
+
+  console.log("oops, session over")
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',

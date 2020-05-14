@@ -1,4 +1,4 @@
-console.log("callback");
+console.log("callback")
 
 const express       = require('express')
 const request       = require('request')
@@ -29,7 +29,6 @@ function callback (req, res) {
     res.cookie('access_token', body.access_token)
 
     res.redirect(uri)
-    console.log("res", access_token)
   })
 }
 

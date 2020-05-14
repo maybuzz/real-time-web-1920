@@ -4,6 +4,7 @@ const { app }       = require('../server')
 
 const index         = require('./index')
 const login         = require('./login')
+const home          = require('./home')
 const room          = require('./room')
 
 // pre-coded rooms
@@ -18,6 +19,7 @@ const callback      = require('../modules/callback')
 
 app.get('/', index)
 app.get('/login', login)
+app.get('/home', home)
 
 // oauth middleware
 app.get('/callback', callback)

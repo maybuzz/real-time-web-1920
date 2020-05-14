@@ -1,4 +1,4 @@
-const {getDataWithToken} = require('../modules/helper')
+const { getDataWithToken } = require('../modules/helper')
 
 async function getRoom1(req, res) {
   const albumId = '6R1VyRo1cFv2JDC1diCkPS'

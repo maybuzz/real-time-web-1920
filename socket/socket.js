@@ -1,49 +1,60 @@
+console.log("socket")
+
 const { io } = require('../server')
 const fetch = require('node-fetch')
+const cookie = require('cookie')
 
 // SOCKET SETUP
 io.on('connection', function(socket) {
 	console.log('user connected ' + '(' + socket.id + ')')
 
+  const cookies = cookie.parse(socket.request.headers.cookie)
+  const token = cookies.access_token
+
   let id = socket.id
   let userName = 'anonymous'
 
-  // socket.on('set user', function(id) {
-  //   console.log("id", id);
-  //   const oldUsername = userName;
-  //   userName = id;
-  //   console.log(`user with id ${userName} connected`);
-  //   socket.emit('server message', `SERVER: Your username was changed to ${userName}.`);
-  //   socket.broadcast.emit('server message', `SERVER: User ${oldUsername} changed their name to ${userName}.`);
-  // });
+  socket.on('set user', function(id) {
+    const oldUsername = userName
+    userName = id
 
-  socket.emit('server message', `Welcome to the album.`)
+    console.log(`user with id ${userName} connected`)
+    socket.emit('server message', `- your username was changed to "${userName}" -`);
+    socket.broadcast.emit('server message', `- user ${oldUsername} changed their name to "${userName}" -`)
+  })
+
+  socket.emit('server message', `- welcome to the album -`)
   socket.broadcast.emit('server message', `${userName} ${id} connected.`)
 
   socket.on('disconnect', function(){
     console.log(`${userName} ${id} disconnected`)
-    io.emit('server message', `${userName} ${id} disconnected.`)
+    io.emit('server message', `- ${userName} ${id} disconnected -`)
   })
 
   socket.on('chat message', function(msg) {
     console.log('message: ' + msg)
-    io.emit('chat message', `${userName}: ${msg}`)
+    socket.emit('chat message', `${msg}`)
+    socket.broadcast.emit('recieve message', `${userName}: ${msg}`)
   })
+
+  // socket.on('recieve message', function(msg) {
+	// 	socket.broadcast.emit('recieve message', `${userName}: ${msg}`)
+	// })
 
   socket.on('play album', function(album) {
 
     function playAlbum(album){
 
-      return fetch(`https://api.spotify.com/v1/me/player/play`,
-      {
-        method: "PUT",
-        headers: {
-          'Authorization': 'Bearer ' + album.token
-        },
-        body: JSON.stringify({
-          context_uri: album.uri
-        })
-      }).then((response) => response.json())
+        return fetch(`https://api.spotify.com/v1/me/player/play`,
+        {
+          method: "PUT",
+          headers: {
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({
+            context_uri: album.uri
+          })
+        }).then((response) => response )
     }
 
     playAlbum(album)
@@ -63,12 +74,12 @@ io.on('connection', function(socket) {
       {
         method: "PUT",
         headers: {
-          'Authorization': 'Bearer ' + album.token
+          'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
           context_uri: album.uri
         })
-      }).then((response) => response.json())
+      }).then((response) => response)
     }
 
     pauseAlbum(album)
@@ -84,12 +95,13 @@ io.on('connection', function(socket) {
       {
         method: "PUT",
         headers: {
-          'Authorization': 'Bearer ' + album.token
+          'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
           context_uri: album.uri
         })
-      }).then((response) => response.json())
+      }).then((response) => response)
+
     }
 
     pauseAlbum(album)

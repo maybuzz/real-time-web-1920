@@ -1,4 +1,4 @@
-const {getDataWithToken} = require('../modules/helper')
+const { getDataWithToken } = require('../modules/helper')
 
 async function search(req, res){
   let searchVal = req.body.search
