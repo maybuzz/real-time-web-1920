@@ -39,13 +39,13 @@ io.on('connection', function(socket) {
       userName = id
 
       console.log(`user with id ${userName} connected`)
-      io.to(user.room).emit('server message', `- your username was changed to "${userName}" -`);
+      socket.to(user.room).emit('server message', `- your username was changed to "${userName}" -`);
       socket.broadcast.to(user.room).emit('server message', `- user ${oldUsername} changed their name to "${userName}" -`)
     })
 
     socket.on('chat message', function(msg) {
       console.log('message: ' + msg)
-      io.to(user.room).emit('chat message', `${msg}`)
+      socket.to(user.room).emit('chat message', `${msg}`)
       socket.broadcast.to(user.room).emit('recieve message', `${userName}: ${msg}`)
     })
 
