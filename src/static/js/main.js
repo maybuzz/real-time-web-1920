@@ -19,6 +19,9 @@
   // join room
   socket.emit('joinRoom', { room })
 
+  // get room and users
+  // socket.on('roomUsers', ())
+
   // client (me) messages
   socket.on('chat message', function(msg){
     console.log("msg", msg)

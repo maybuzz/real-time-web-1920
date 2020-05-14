@@ -69,7 +69,7 @@ async function getRoom2(req, res) {
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
 
-  console.log('album', album);
+  // console.log('album', album);
 
   for (var i = 0; i < tracks.items.length; i++) {
     const trackUri = tracks.items[i].uri

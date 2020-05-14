@@ -31,21 +31,27 @@ io.on('connection', function(socket) {
 
     socket.join(user.room)
 
-    io.to(user.room).emit('server message', `- welcome to the album -`)
+    socket.emit('server message', `- welcome to the album -`)
     socket.broadcast.to(user.room).emit('server message', `${userName} ${id} connected.`)
+
+    // send users and room info
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room)
+    })
 
     socket.on('set user', function(id) {
       const oldUsername = userName
       userName = id
 
       console.log(`user with id ${userName} connected`)
-      socket.to(user.room).emit('server message', `- your username was changed to "${userName}" -`);
+      socket.emit('server message', `- your username was changed to "${userName}" -`);
       socket.broadcast.to(user.room).emit('server message', `- user ${oldUsername} changed their name to "${userName}" -`)
     })
 
     socket.on('chat message', function(msg) {
       console.log('message: ' + msg)
-      socket.to(user.room).emit('chat message', `${msg}`)
+      socket.emit('chat message', `${msg}`)
       socket.broadcast.to(user.room).emit('recieve message', `${userName}: ${msg}`)
     })
 
@@ -124,6 +130,12 @@ io.on('connection', function(socket) {
     if (user) {
       io.to(user.room).emit('server message', `- ${userName} ${id} disconnected -`)
     }
+
+    // send users and room info
+    // io.to(user.room).emit('roomUsers', {
+    //   room: user.room,
+    //   users: getRoomUsers(user.room)
+    // })
 
   })
 

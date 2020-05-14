@@ -11,6 +11,7 @@
   --name: #444;
   --spotify: #11aa44;
   --blue: #123;
+  --btn: palevioletred;
 }
 
 * {
@@ -233,7 +234,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 57.5vh;
+  height: 49vh;
 }
 
 .form-container {
@@ -276,6 +277,7 @@ body {
   border-radius: 0 50px 50px 0;
   border: solid 1px var(--dark);
   font-size: 1rem;
+  background-color: var(--btn);
 }
 
 .chat-form-btn:hover, .chat-form-btn:focus {
@@ -470,8 +472,8 @@ body {
 
 #submit {
   width: 25vw;
-  background-color: palevioletred;
-  color: #fff;
+  background-color: var(--btn);
+  color: var(--light);
   font-size: 1rem;
   border: none;
   border-radius: 0 50px 50px 0;
