@@ -106,6 +106,9 @@
     newLi.setAttribute('class', 'track-msg--play')
     newLi.textContent = "start playing"
     ul.append(newLi)
+
+    ul.scrollTop = ul.scrollHeight
+
   })
 
   // msg sockets pause album
@@ -114,6 +117,9 @@
     newLi.setAttribute('class', 'track-msg--pause')
     newLi.textContent = "stop playing"
     ul.append(newLi)
+
+    ul.scrollTop = ul.scrollHeight
+
   })
 
   // msg sockets leave room
@@ -122,6 +128,9 @@
     newLi.setAttribute('class', 'track-msg--pause')
     newLi.textContent = "aju paraplu"
     ul.append(newLi)
+
+    ul.scrollTop = ul.scrollHeight
+
   })
 
   // handle form shizzle
@@ -149,6 +158,8 @@
     if (name.value.length > 0 && name.value !== ' ' && name.value !== '  ' && name.value !== '   ') {
 
       socket.emit('set user', name.value)
+
+      input.focus()
 
   		return false
     } else {

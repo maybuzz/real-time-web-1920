@@ -188,6 +188,7 @@ socket.on('leave room', function(track){
 - [x] Play/pause album
 - [x] Pause album on leave
 - [ ] Start/play album on join
+- [ ] Add album track to queue
 - [x] Chat in room
   - [x] Send messages
   - [x] Receive messages
@@ -225,11 +226,11 @@ socket.on('leave room', function(track){
 - [ ] Write checks (data check, spotify active check etc)
 
 ## Credits
-[Guido Bouman](https://github.com/guidobouman) for live-coding   
+[Rooms & users tutorial](https://www.youtube.com/watch?v=jD7FnbI76Hg&start=1543s) helped me setup rooms and users  
+[Guido Bouman](https://github.com/guidobouman) for live-coding and setting username      
 [Titus Wormer](https://github.com/wooorm) for rubberducking         
 [Spotify developer docs](https://developer.spotify.com/console/) for endpoints and documentation   
-[maybuzz/meesterproef-1819](https://github.com/maybuzz/meesterproef-1819) for oAuth setup  
-[Rooms & users tutorial](https://www.youtube.com/watch?v=jD7FnbI76Hg&start=1543s) helped me setup rooms and users   
+[maybuzz/meesterproef-1819](https://github.com/maybuzz/meesterproef-1819) for oAuth setup   
 
 
 ## License

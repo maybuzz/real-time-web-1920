@@ -236,7 +236,7 @@ body {
 /* ROOM: CHAT */
 .chat {
   background-color: var(--light);
-  padding-bottom: 2.55em;
+  padding-bottom: 2.5em;
 }
 
 .chat-container {
@@ -244,7 +244,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 49vh;
+  height: 50.55vh;
 }
 
 .form-container {
