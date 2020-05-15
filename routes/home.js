@@ -45,14 +45,6 @@ async function home(req,res){
   const album2 = await getDataWithToken(config_album2)
   const album3 = await getDataWithToken(config_album3)
 
-  // try {
-  //   const cover = await getDataWithToken(config_current)
-  //   console.log("succes", cover.item);
-  // } catch (e) {
-  //   const cover = await getDataWithToken(config_recent)
-  //   console.log("meh", cover);
-  // }
-
   try {
     const player = await getDataWithToken(config_player)
   } catch (e) {

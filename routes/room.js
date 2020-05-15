@@ -50,8 +50,7 @@ async function room(req, res) {
     res.render('room', {
       recent: recent,
       album: album,
-      tracks: tracks.items,
-      token: access_token
+      tracks: tracks.items
     })
   }
 }

@@ -170,7 +170,6 @@
 
   // get users in room
   function outputUsers(users) {
-    console.log("usersss", users)
 
     if (users.length === 1) {
       userCount.textContent = `this room contains `+users.length+` user`

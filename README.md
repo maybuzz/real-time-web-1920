@@ -52,6 +52,7 @@ Finally, all requests to the Spotify API require authentication. This can be don
 - `currently playing` -> The profile picture in the top right corner will change to the album cover of your currently playing track. If this is not available we'll use the cover of your most recently played track.
 - `play album` & `pause album` -> As a host you can play and pause the album. This effects all the users/sockets inside the room.
 - `leaving the room` -> Leaving the room will stop/pause the listening session. This way users will need to join a room to listen to an album.
+- `get active users` -> In every
 
 ## API
 The Spotify API has a lot of different endpoint you could use. Every endpoint will provide a data object with lots of data, depending on your endpoint. For example, album data will look like this:
@@ -103,7 +104,6 @@ For this application we'll be using;
 - `/albums/{id}/tracks` -> get the tracks from a specific album using the Spotify ID  
 - `/me/player/{play of pause}` -> interact with spotify app; start/play/pause tracks
 - `/me/player/recently-played` -> interact with spotify app; start/play/pause tracks
-- `/me/top/{artist or tracks}` -> get personal top tracks or artists
 
 ## Concept
 The chatrooms in this app are created by users and revolve around different albums on Spotify. When a user enters the room they will join the others inside the room and listen to the set album together. This way everyone can listen to the same album at the same time, as if you're listening to a record with your friends. Users can join and leave as they please, everything is connected to your Spotify account. You will need to open Spotify so the app can set the right song, when listening to the album together.
@@ -112,6 +112,8 @@ Your profile shows your Top Artists and -Songs. This tells other users a lot abo
 
 ### DLC
 ![DLC](/img/DLC2.png)
+
+![DLC](/img/DLCschets.jpeg)
 
 ## Snippets
 There are a few elements in my code that I'm very proud of. For example, the part where I send my album data to the sockets. I struggles with this for a while, but I finally got it figured out.
@@ -126,7 +128,7 @@ pause.addEventListener('click', (btn) => {
   btn.preventDefault()
 
   const data = {
-    // uri & token data
+    // uri data
   }
 
   play.classList.toggle('invisible')
@@ -140,9 +142,10 @@ pause.addEventListener('click', (btn) => {
 The following code snippets show my app handling an event, both server- and client side. I struggled with figuring out how to do a PUT request using oAuth. This took a lot of time and it still needs a lot of thinking, but I felt like I needed to move on. Next time, I will for sure use a database to store my data and tokens, cause I feel like this will make a lot of thinks much easier.
 
 ```js
-// snippet from app.js
+// snippet from socket/socket.js
 // this is the part where I handle the event of a user leaving the room.
 // first I pause the album playing, then I emit the event to the client.
+
 socket.on('leave room', function(album) {
 
   function pauseAlbum(album){
@@ -161,7 +164,7 @@ socket.on('leave room', function(album) {
 
   pauseAlbum(album)
 
-  io.emit('leave room')
+  io.to(user.room).emit('pause track', `${album}`)
 })
 ```
 ```js
@@ -175,6 +178,9 @@ socket.on('leave room', function(track){
   newLi.setAttribute('class', 'server-msg')
   newLi.textContent = "aju paraplu"
   ul.append(newLi)
+
+  ul.scrollTop = ul.scrollHeight
+
 })
 ```
 
@@ -226,7 +232,8 @@ socket.on('leave room', function(track){
 - [ ] Write checks (data check, spotify active check etc)
 
 ## Credits
-[Rooms & users tutorial](https://www.youtube.com/watch?v=jD7FnbI76Hg&start=1543s) helped me setup rooms and users  
+[Rooms & users tutorial](https://www.youtube.com/watch?v=jD7FnbI76Hg&start=1543s) helped me setup rooms and users   
+[Peppe-Quint](https://github.com/peppequint/real-time-web-1920) for code structure and setting up rooms   
 [Guido Bouman](https://github.com/guidobouman) for live-coding and setting username      
 [Titus Wormer](https://github.com/wooorm) for rubberducking         
 [Spotify developer docs](https://developer.spotify.com/console/) for endpoints and documentation   
