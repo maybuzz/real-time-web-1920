@@ -4,10 +4,10 @@ const { io }    = require('../server')
 const fetch     = require('node-fetch')
 const cookie    = require('cookie')
 const qs        = require('qs')
-const { userJoin }  = require('./../controls/users')
-const { getCurrentUser }  = require('./../controls/users')
-const { userLeave }  = require('./../controls/users')
-const { getRoomUsers }  = require('./../controls/users')
+const { userJoin }  = require('./../utils/users')
+const { getCurrentUser }  = require('./../utils/users')
+const { userLeave }  = require('./../utils/users')
+const { getRoomUsers }  = require('./../utils/users')
 
 // SOCKET SETUP
 io.on('connection', function(socket) {
@@ -31,8 +31,8 @@ io.on('connection', function(socket) {
 
     socket.join(user.room)
 
-    socket.emit('server message', `- welcome to the album -`)
-    socket.broadcast.to(user.room).emit('server message', `${userName} ${id} connected.`)
+    socket.emit('server message', `// welcome to the album //`)
+    socket.broadcast.to(user.room).emit('server message', `"${userName}" joined the room`)
 
     // send users and room info
     io.to(user.room).emit('roomUsers', {
@@ -45,8 +45,8 @@ io.on('connection', function(socket) {
       userName = id
 
       console.log(`user with id ${userName} connected`)
-      socket.emit('server message', `- your username was changed to "${userName}" -`);
-      socket.broadcast.to(user.room).emit('server message', `- user ${oldUsername} changed their name to "${userName}" -`)
+      socket.emit('server message', `we'll call you "${userName}" now`);
+      socket.broadcast.to(user.room).emit('server message', `"${oldUsername}" is called "${userName}" now`)
     })
 
     socket.on('chat message', function(msg) {
@@ -117,7 +117,7 @@ io.on('connection', function(socket) {
 
       pauseAlbum(album)
 
-      io.to(user.room).emit('leave room', `${album}`)
+      socket.emit('leave room', `${album}`)
     })
   })
 
@@ -128,14 +128,14 @@ io.on('connection', function(socket) {
     const user = userLeave(socket.id)
 
     if (user) {
-      io.to(user.room).emit('server message', `- ${userName} ${id} disconnected -`)
-    }
+      io.to(user.room).emit('server message', `"${userName}" has left the room`)
 
-    // send users and room info
-    // io.to(user.room).emit('roomUsers', {
-    //   room: user.room,
-    //   users: getRoomUsers(user.room)
-    // })
+      // send users and room info
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      })
+    }
 
   })
 

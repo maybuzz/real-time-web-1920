@@ -1,3 +1,7 @@
+- update DLC
+- update resources
+- video afkijken en toevoegen
+
 # Get a room · rtw 1920
 
 "Get a Room" is a real-time application using the spotify API and socket.io. Users can join or create rooms to listen to a certain album together. Within the chatroom users can discuss the songs on the album; talk about the artist, share facts about the album, etc.
@@ -177,27 +181,30 @@ socket.on('leave room', function(track){
 ## Checklist
 - [x] Search for album
 - [x] Get room with album + tracks
-  - [ ] Setup custom rooms using socket.io
-  - [ ] Set position of track for all users, using socket.io
+  - [x] Setup custom rooms using socket.io
+  - [ ] Set position of track for all users
+- [x] Show users in room
 - [ ] Separate host from clients
 - [x] Play/pause album
 - [x] Pause album on leave
 - [ ] Start/play album on join
-- [ ] Chat in room
+- [x] Chat in room
   - [x] Send messages
   - [x] Receive messages
-  - [ ] Styling; personal messages & user messages
-  - [ ] Set custom username
+  - [x] Styling
+  - [x] Set custom username
+- [x] Store data on server
+- [ ] Store data in database
+- [x] Use socket.io for everything
+- [x] Multi user support: broadcast track to all sockets
+- [ ] Make responsive (mobile, tablet)
 - [ ] Show user profile
   - [ ] Currently playing
   - [ ] Top artists/tracks
-- [ ] Work with database to store data & messages etc.
-- [ ] Use socket.io for everything
-- [ ] Make responsive (mobile, tablet)
-- [ ] Multi user support: broadcast track to all sockets.
+- [ ] Errorhandling & checks
 
 ## To-do
-- [ ] Data life cycle iteration
+- [x] Data life cycle iteration
 - [x] Ejs templates
 - [x] CSS
 - [x] Setup server
@@ -208,10 +215,9 @@ socket.on('leave room', function(track){
     - [x] Get recently played tracks
     - [x] Search album, set album to room
     - [x] Play/pause tracks
-  - [ ] Use data
 - [x] Setup socket.io
-  - [ ] Finish chat
-  - [ ] Setup rooms
+  - [x] Chat
+  - [x] Rooms
   - [ ] Play album on different sockets
   - [ ] Room host and clients
 - [ ] Setup database
@@ -222,7 +228,9 @@ socket.on('leave room', function(track){
 [Guido Bouman](https://github.com/guidobouman) for live-coding   
 [Titus Wormer](https://github.com/wooorm) for rubberducking         
 [Spotify developer docs](https://developer.spotify.com/console/) for endpoints and documentation   
-[maybuzz/meesterproef-1819](https://github.com/maybuzz/meesterproef-1819) for oAuth setup   
+[maybuzz/meesterproef-1819](https://github.com/maybuzz/meesterproef-1819) for oAuth setup  
+[Rooms & users tutorial](https://www.youtube.com/watch?v=jD7FnbI76Hg&start=1543s) helped me setup rooms and users   
+
 
 ## License
 [MIT](LICENSE) © [Luna May Johansson](https://github.com/maybuzz)

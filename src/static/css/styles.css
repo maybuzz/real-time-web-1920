@@ -70,11 +70,6 @@ body {
 }
 
 .main-room-container {
-  display: grid;
-  grid-template-areas:
-    "chat chat chat chat chat online"
-    "chat chat chat chat chat online"
-    "chat chat chat chat chat online";
   height: 70%;
   background-color: var(--light);
 }
@@ -151,7 +146,6 @@ body {
 .rooms-list-item {
   list-style-type: none;
   position: relative;
-  /* margin-right: 1.5em; */
 }
 .rooms-list-item:first-of-type {
   margin-left: 1.5em;
@@ -210,11 +204,20 @@ body {
   color: mediumslateblue;
 }
 
+.album-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .controls-btn {
   border-radius: 100px;
   background-color: var(--spotify);
   color: var(--light);
   padding: 1rem 2rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 13.5rem;
 }
 
 .controls-btn:hover, .controls-btn:focus {
@@ -222,9 +225,16 @@ body {
   background-color: var(--hover);
 }
 
+#users {
+  position: absolute;
+  top: 5rem;
+  right: 1.5rem;
+  width: 7rem;
+  text-align: right;
+}
+
 /* ROOM: CHAT */
 .chat {
-  grid-area: chat;
   background-color: var(--light);
   padding-bottom: 2.55em;
 }
@@ -239,13 +249,12 @@ body {
 
 .form-container {
   position: absolute;
-    bottom: 0;
-    width: 100%;
+  bottom: 0;
+  width: 100%;
 }
 
 .chat-form {
   width: 100%;
-  /* position: absolute; */
   display: flex;
   padding: .75rem 0;
   margin-top: auto;
@@ -254,10 +263,10 @@ body {
 
 .username-form {
   display: flex;
-  padding: .75rem 0;
+  padding: .75rem 0 0;
   margin-top: auto;
   background-color: var(--dark);
-  width: 50%;
+  width: 25%;
   border-radius: 0px 25px 0px 0px;
   padding-right: 1rem;
 }
@@ -273,11 +282,13 @@ body {
 }
 
 .chat-form-btn {
-  width: 20%;
+  width: 25%;
   border-radius: 0 50px 50px 0;
-  border: solid 1px var(--dark);
+  border: solid 1px;
   font-size: 1rem;
   background-color: var(--btn);
+  border: solid 1px var(--dark);
+  color: var(--light);
 }
 
 .chat-form-btn:hover, .chat-form-btn:focus {
@@ -287,8 +298,9 @@ body {
 
 .server-msg {
   text-align: center;
-  color: #222;
+  color: #BBBFFF;
   list-style-type: none;
+  font-size: 1.1rem;
 }
 
 .track-msg--play {

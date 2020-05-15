@@ -25,8 +25,6 @@ async function getRoom1(req, res) {
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
 
-  console.log('album', album);
-
   for (var i = 0; i < tracks.items.length; i++) {
     const trackUri = tracks.items[i].uri
   }
@@ -112,8 +110,6 @@ async function getRoom3(req, res) {
   const recent = await getDataWithToken(config_recent)
   const album = await getDataWithToken(config_album)
   const tracks = await getDataWithToken(config_tracks)
-
-  console.log('album', album);
 
   for (var i = 0; i < tracks.items.length; i++) {
     const trackUri = tracks.items[i].uri

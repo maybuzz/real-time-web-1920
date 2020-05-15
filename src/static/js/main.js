@@ -11,16 +11,21 @@
   const pause = document.querySelector('.pause')
   const footer = document.querySelector('.footer')
   const btnBack = document.querySelector('.btn--back')
+  const userCount = document.querySelector('#users')
 
   const fromUrl = Qs.parse({room: window.location.pathname})
 
   const room = fromUrl.room
 
+  input.focus()
+
   // join room
   socket.emit('joinRoom', { room })
 
   // get room and users
-  // socket.on('roomUsers', ())
+  socket.on('roomUsers', function({ room, users }){
+    outputUsers(users)
+  })
 
   // client (me) messages
   socket.on('chat message', function(msg){
@@ -151,6 +156,17 @@
     }
 
   })
+
+  // get users in room
+  function outputUsers(users) {
+    console.log("usersss", users)
+
+    if (users.length === 1) {
+      userCount.textContent = `this room contains `+users.length+` user`
+    } else {
+      userCount.textContent = `this room contains `+users.length+` users`
+    }
+  }
 
 
 }())
